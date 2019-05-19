@@ -45,7 +45,7 @@ services:
       retries: 12
 
   elasticsearch:
-    image: elasticsearch:5.6.16-alpine
+    image: docker.elastic.co/elasticsearch/elasticsearch:5.6.8
     environment:
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
       - transport.host=0.0.0.0
