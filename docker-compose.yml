@@ -32,27 +32,6 @@ services:
     links:
       - conductor-server
 
-  conductor-server:
-    build: .
-    image: flaviostutz/conductor-server
-    environment:
-      - CONFIG_PROP=config.properties
-    ports:
-      - 8080:8080
-    links:
-      - elasticsearch:es
-      - dynomite:dyno1
-    depends_on:
-      elasticsearch:
-        condition: service_healthy
-      dynomite:
-        condition: service_healthy
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "1k"
-        max-file: "3"
-
   dynomite:
     image: v1r3n/dynomite
     ports:
