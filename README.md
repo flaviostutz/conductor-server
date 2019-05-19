@@ -35,7 +35,7 @@ services:
         condition: service_healthy
 
   dynomite:
-    image: v1r3n/dynomite
+    image: flaviostutz/dynomite:0.7.0
     ports:
       - 8102:8102
     healthcheck:
@@ -45,7 +45,7 @@ services:
       retries: 12
 
   elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:5.6.8
+    image: elasticsearch:5.6.16-alpine
     environment:
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
       - transport.host=0.0.0.0
