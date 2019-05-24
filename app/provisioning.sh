@@ -21,6 +21,7 @@ if [ -d /provisioning/tasks ]; then
     for jsonfile in /provisioning/tasks/*.json ; 
     do
         found=1
+        echo "================================="
         python /app/provision-task.py $jsonfile
         if [ -f /tmp/error ]; then
             echo "Error provisioning task. Aborting."
@@ -40,6 +41,7 @@ if [ -d /provisioning/workflows ]; then
     for jsonfile in /provisioning/workflows/*.json ; 
     do
         found=1
+        echo "================================="
         python /app/provision-workflow.py $jsonfile
         if [ -f /tmp/error ]; then
             echo "Error provisioning workflow. Aborting."
@@ -51,4 +53,5 @@ if [ "$found" == "0" ];then
     echo "No json files with workflow defs found at /provisioning/workflows"
 fi
 
-
+echo "Provisioning finished"
+echo "================================="

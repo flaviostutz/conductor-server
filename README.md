@@ -109,3 +109,5 @@ When the container starts:
 * ELASTICSEARCH_URL Elastic search 'host:port' for acessing ES cluster. Doesn't support multiple servers here
 
 * LOADSAMPLE 'true' for provisioning Conductor demo app and instantiate a workflow. defaults to false
+
+* PROVISIONING_UPDATE_EXISTING_TASKS 'true' for updating existing taskdefs with /provisioning/tasks json contents. 'false' won't update existing taskdefs with the same name as disk contents. defaults to 'true'
