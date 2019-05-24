@@ -28,7 +28,7 @@ COPY --from=builder /conductor/server/build/libs/conductor-server-*-all.jar /app
 
 ADD /app/* /app/
 
-ADD /example/provisioning /provisioning
+# ADD /example/provisioning /provisioning
 
 ENV DYNOMITE_HOSTS ''
 ENV DYNOMITE_CLUSTER 'dyno1'
