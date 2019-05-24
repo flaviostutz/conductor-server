@@ -6,12 +6,11 @@ services:
     build: .
     image: flaviostutz/conductor-server
     environment:
-      - CONFIG_PROP=config.properties
+      - DYNOMITE_HOSTS=dynomite:8102:us-east-1c
+      - ELASTICSEARCH_URL=elasticsearch:9300
+      - LOADSAMPLE=false
     ports:
       - 8080:8080
-    links:
-      - elasticsearch:es
-      - dynomite:dyno1
     depends_on:
       elasticsearch:
         condition: service_healthy
@@ -22,7 +21,7 @@ services:
       options:
         max-size: "1k"
         max-file: "3"
-        
+
   conductor-ui:
     image: flaviostutz/conductor-ui
     environment:
