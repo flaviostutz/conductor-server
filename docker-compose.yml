@@ -1,10 +1,10 @@
-version: '2.3'
+version: '3.7'
 
 services:
 
   conductor-server:
     build: .
-    image: flaviostutz/conductor-server
+    image: flaviostutz/conductor-server:2.12.1.5
     environment:
       - DYNOMITE_HOSTS=dynomite:8102:us-east-1c
       - ELASTICSEARCH_URL=elasticsearch:9300
@@ -12,16 +12,16 @@ services:
       - PROVISIONING_UPDATE_EXISTING_TASKS=false
     ports:
       - 8080:8080
-    depends_on:
-      elasticsearch:
-        condition: service_healthy
-      dynomite:
-        condition: service_healthy
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "1k"
-        max-file: "3"
+    # depends_on:
+    #   elasticsearch:
+    #     condition: service_healthy
+    #   dynomite:
+    #     condition: service_healthy
+    # logging:
+    #   driver: "json-file"
+    #   options:
+    #     max-size: "1k"
+    #     max-file: "3"
 
   conductor-ui:
     image: flaviostutz/conductor-ui
@@ -29,23 +29,23 @@ services:
       - WF_SERVER=http://conductor-server:8080/api/
     ports:
       - 5000:5000
-    links:
-      - conductor-server
+    # links:
+    #   - conductor-server
 
   dynomite:
     image: flaviostutz/dynomite
     ports:
       - 8102:8102
-    healthcheck:
-      test: timeout 5 bash -c 'cat < /dev/null > /dev/tcp/localhost/8102'
-      interval: 5s
-      timeout: 5s
-      retries: 12
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "1k"
-        max-file: "3"
+    # healthcheck:
+    #   test: timeout 5 bash -c 'cat < /dev/null > /dev/tcp/localhost/8102'
+    #   interval: 5s
+    #   timeout: 5s
+    #   retries: 12
+    # logging:
+    #   driver: "json-file"
+    #   options:
+    #     max-size: "1k"
+    #     max-file: "3"
 
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:5.6.8
@@ -57,13 +57,13 @@ services:
     ports:
       - 9200:9200
       - 9300:9300
-    healthcheck:
-      test: timeout 5 bash -c 'cat < /dev/null > /dev/tcp/localhost/9300'
-      interval: 5s
-      timeout: 5s
-      retries: 12
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "1k"
-        max-file: "3"
+    # healthcheck:
+    #   test: timeout 5 bash -c 'cat < /dev/null > /dev/tcp/localhost/9300'
+    #   interval: 5s
+    #   timeout: 5s
+    #   retries: 12
+    # logging:
+    #   driver: "json-file"
+    #   options:
+    #     max-size: "1k"
+    #     max-file: "3"

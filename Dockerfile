@@ -15,7 +15,7 @@ RUN ./gradlew build -x test
 
 FROM openjdk:8-jre-alpine
 
-RUN apk add --update python py-pip bash curl gettext
+RUN apk add --update python py-pip bash curl gettext netcat-openbsd
 RUN pip install requests fmt
 
 RUN mkdir -p /app/config /app/logs /app/libs
