@@ -21,7 +21,7 @@ services:
       - 5000:5000
 
   dynomite:
-    image: flaviostutz/dynomite
+    image: flaviostutz/dynomite:0.7.5
     ports:
       - 8102:8102
 
