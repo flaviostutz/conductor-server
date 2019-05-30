@@ -12,9 +12,11 @@ services:
       - PROVISIONING_UPDATE_EXISTING_TASKS=false
     ports:
       - 8080:8080
-    options:
-      max-size: "20MB"
-      max-file: "5"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "20MB"
+        max-file: "5"
 
   conductor-ui:
     image: flaviostutz/conductor-ui
@@ -22,28 +24,34 @@ services:
       - WF_SERVER=http://conductor-server:8080/api/
     ports:
       - 5000:5000
-    options:
-      max-size: "20MB"
-      max-file: "5"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "20MB"
+        max-file: "5"
 
   dynomite:
     image: flaviostutz/dynomite:0.7.5
     ports:
       - 8102:8102
-    options:
-      max-size: "20MB"
-      max-file: "5"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "20MB"
+        max-file: "5"
 
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:5.6.8
     environment:
-      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - "ES_JAVA_OPTS=-Xms512m -Xmx2000m"
       - transport.host=0.0.0.0
       - discovery.type=single-node
       - xpack.security.enabled=false
     ports:
       - 9200:9200
       - 9300:9300
-    options:
-      max-size: "20MB"
-      max-file: "5"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "20MB"
+        max-file: "5"
