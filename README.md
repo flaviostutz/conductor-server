@@ -1,6 +1,10 @@
 # conductor-server
 Netflix's Conductor Server Docker container
 
+Check out my other Netflix Conductor Tools:
+* [Schellar](https://github.com/flaviostutz/schellar) is a scheduler tool for instantiating Conductor workflows from time to time
+* [Backtor](https://github.com/flaviostutz/backtor) is a backup scheduler tool that uses Conductor workers to handle backup operations)
+
 ## Usage
 
 * Create docker-compose.yml
