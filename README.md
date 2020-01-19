@@ -5,6 +5,10 @@ For a complete example using Bleve as indexer (instead of Elasticsearch), view[d
 
 To see a video with this container running, go to https://youtu.be/IjJQ0AEoyLo
 
+Check out my other Netflix Conductor Tools:
+* [Schellar](https://github.com/flaviostutz/schellar) is a scheduler tool for instantiating Conductor workflows from time to time
+* [Backtor](https://github.com/flaviostutz/backtor) is a backup scheduler tool that uses Conductor workers to handle backup operations)
+
 ## Usage
 
 * Create docker-compose.yml
