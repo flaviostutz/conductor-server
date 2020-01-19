@@ -4,7 +4,7 @@ services:
 
   conductor-server:
     build: .
-    image: flaviostutz/conductor-server:2.12.1.5
+    image: flaviostutz/conductor-server:2.24.2.1
     environment:
       - DYNOMITE_HOSTS=dynomite:8102:us-east-1c
       - ELASTICSEARCH_URL=elasticsearch:9300

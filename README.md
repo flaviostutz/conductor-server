@@ -1,6 +1,10 @@
 # conductor-server
 Netflix's Conductor Server Docker container
 
+For a complete example using Bleve as indexer (instead of Elasticsearch), view[docker-compose-bleve.yml](/docker-compose-bleve.yml)
+
+To see a video with this container running, go to https://youtu.be/IjJQ0AEoyLo
+
 ## Usage
 
 * Create docker-compose.yml

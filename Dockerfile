@@ -1,16 +1,30 @@
-FROM openjdk:8-jdk AS builder
+FROM flaviostutz/gradle-warmed:jdk8-2.1 AS builder
+# jdk8-1.0
+# FROM maven:3.6.1-jdk-8 AS builder
 
-ARG CONDUCTOR_VERSION=v2.12.1
+ARG CONDUCTOR_VERSION=v2.24.2
 ARG LOG_LEVEL='INFO'
 
+#conductor build
 WORKDIR /
 RUN git clone https://github.com/Netflix/conductor.git
 WORKDIR /conductor
 RUN git checkout tags/$CONDUCTOR_VERSION
 RUN sed -i 's/DEBUG/INFO/g' server/src/main/resources/log4j.properties
 
-RUN ./gradlew build -x test
+#prometheus metrics plugin
+WORKDIR /
+RUN git clone https://github.com/mohelsaka/conductor-prometheus-metrics.git
+WORKDIR /conductor-prometheus-metrics
+RUN cp -r src/main/java/com/conductor_integration /conductor/server/src/main/java/com/
+RUN rm /conductor/server/src/main/java/com/netflix/conductor/server/SwaggerModule.java
+ADD /add-dependencies.sh /
+RUN /add-dependencies.sh
+RUN echo "/conductor/server/build.gradle" && cat /conductor/server/build.gradle
 
+#build
+WORKDIR /conductor
+RUN gradle build -x test --no-daemon --build-cache
 
 
 FROM openjdk:8-jre-alpine
