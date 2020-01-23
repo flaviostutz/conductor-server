@@ -4,7 +4,7 @@ set -e
 echo "Waiting for Conductor to startup before provisioning tasks and workflows..."
 # sleep 5
 c=0
-until $(curl --output /dev/null --silent --head --fail http://localhost:8080); do
+until $(curl --output /dev/null --silent --head --fail http://localhost:8080/api/metadata/taskdefs); do
     echo "."
     sleep 1
     c=$((c + 1))

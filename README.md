@@ -1,6 +1,8 @@
 # conductor-server
 Netflix's Conductor Server Docker container
 
+Prometheus plugin is installed on Conductor. Access metrics by calling '/metrics'
+
 For a complete example using Bleve as indexer (instead of Elasticsearch), view[docker-compose-bleve.yml](/docker-compose-bleve.yml)
 
 To see a video with this container running, go to https://youtu.be/IjJQ0AEoyLo
@@ -24,7 +26,7 @@ services:
     environment:
       - DYNOMITE_HOSTS=dynomite:8102:us-east-1c
       - ELASTICSEARCH_URL=elasticsearch:9300
-      - LOADSAMPLE=false
+      - LOADSAMPLE=true
       - PROVISIONING_UPDATE_EXISTING_TASKS=false
     ports:
       - 8080:8080
@@ -56,7 +58,9 @@ services:
 
 * Run "docker-compose up"
 
-* Open browser at http://localhost:5000 for UI and http://localhost:8080/api for server API
+* Open browser at http://localhost:5000 for UI
+
+* Open browser at http://localhost:8080/metrics to see Prometheus metrics
 
 ## Provisioning Tasks and Workflows
 

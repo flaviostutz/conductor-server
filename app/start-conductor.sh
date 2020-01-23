@@ -3,4 +3,4 @@ echo "Starting Conductor server..."
 
 cd /app/libs
 
-java -jar conductor-server-*-all.jar /app/config.properties
+java -cp conductor-server-all.jar:prometheus-metrics.jar com.netflix.conductor.bootstrap.Main /app/config.properties

@@ -47,7 +47,9 @@ workflow.elasticsearch.url=$ELASTICSEARCH_URL
 workflow.elasticsearch.index.name=conductor
 
 # Additional modules (optional)
-# conductor.additional.modules=class_extending_com.google.inject.AbstractModule
+#conductor.additional.modules=class_extending_com.google.inject.AbstractModule
+conductor.additional.modules=com.conductor_integration.metrics.prometheus.MetricsModule
+workflow.monitor.stats.freq.seconds=10
 
 # Load sample kitchen sink workflow
 loadSample=$LOADSAMPLE

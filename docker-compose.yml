@@ -8,7 +8,7 @@ services:
     environment:
       - DYNOMITE_HOSTS=dynomite:8102:us-east-1c
       - ELASTICSEARCH_URL=elasticsearch:9300
-      - LOADSAMPLE=false
+      - LOADSAMPLE=true
       - PROVISIONING_UPDATE_EXISTING_TASKS=false
     ports:
       - 8080:8080
