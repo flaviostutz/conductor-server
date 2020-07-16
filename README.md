@@ -1,4 +1,7 @@
 # conductor-server
+
+[<img src="https://img.shields.io/docker/automated/flaviostutz/conductor-server"/>](https://hub.docker.com/r/flaviostutz/conductor-server)
+
 Netflix's Conductor Server Docker container
 
 Prometheus plugin is installed on Conductor. Access metrics by calling '/metrics'
